@@ -5,16 +5,7 @@ var imagemin = require('gulp-imagemin');
 var imageResize = require('gulp-image-resize');
 var path = require('path');
 
-gulp.task('sometask', function() {
-  console.log('hello');
-});
-
-gulp.task('task', folders('base', function(folder){
-  //This will loop over all folders inside pathToFolder main, secondary
-  //Return stream so gulp-folders can concatenate all of them
-  //so you still can use safely use gulp multitasking
-  console.log(folder);
-
+gulp.task('process', folders('base', function(folder){
   return gulp.src(path.join('base', folder, '*.jpg'))
     .pipe(changed(path.join('processed', folder)))
     .pipe(imageResize({
@@ -28,5 +19,5 @@ gulp.task('task', folders('base', function(folder){
 }));
 
 gulp.task('watch', function() {
-  gulp.watch('base/**/*.jpg', ['task']);
+  gulp.watch('base/**/*.jpg', ['process']);
 });
