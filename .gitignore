@@ -32,5 +32,6 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Exclude image folder
+# Exclude image folders
 base
+processed
